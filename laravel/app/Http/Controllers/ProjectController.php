@@ -10,14 +10,19 @@ class ProjectController extends Controller
     public function createProject(Request $request){
         $project = Project::create([
             "name"=> $request->name,
-            "details"=> $request->details,
+            "description"=> $request->description,
         ]);
+    }
+
+    public function getProjectwithUsers(){
+        $projects=Project::with('users')->get();
+        return response()->json(["projects"=>$projects],200);
     }
 
     public function updateProject(Request $request, $id){
         $project = Project::find($id)->update([
             "name"=> $request->name,
-            "details"=> $request->details,
+            "description"=> $request->description,
         ]);
         return response()->json(["updated_project"=>$project],200);
     }

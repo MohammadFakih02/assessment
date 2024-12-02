@@ -10,7 +10,7 @@ class UserController extends Controller
     public function createUsers(Request $request){
         $user = User::create([
             "name"=> $request->name,
-            "password"=>$request->password,
+            "color"=>$request->color,
         ] );
     }
     public function getUsers($id=null){
@@ -24,7 +24,7 @@ class UserController extends Controller
     public function updateUsers(Request $request,$id){
         $user = User::find($id)->update([
             "name"=> $request->name,
-            "password"=> $request->password,
+            "color"=> $request->color,
         ]);
         return response()->json(["updated_user"=>$user],200);
     }
