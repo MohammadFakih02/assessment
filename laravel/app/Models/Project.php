@@ -10,7 +10,7 @@ class Project extends Model
     
     protected $fillable = [
         'name',
-        'details',
+        'descriptions',
     ];
 
     public function users(): BelongsToMany{
