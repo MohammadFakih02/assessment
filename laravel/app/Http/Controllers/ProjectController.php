@@ -30,4 +30,9 @@ class ProjectController extends Controller
         $project= Project::all();
         return response()->json(["projetcs"=> $project],404);
     }
+    public function deleteProject($id){
+        $project = Project::find($id)->delete();
+        $project->users()->detach($id);
+        return response()->json(["deleted_project"=>$project],200);
+    }
 }
