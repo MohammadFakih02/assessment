@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function deleteUsers($id){
         $user=User::find($id)->delete();
-        $user->projects()->detach($id);
+        $user->projects()->detach();
         return response()->json(["deleted_user"=>$user],200);
     }
 }

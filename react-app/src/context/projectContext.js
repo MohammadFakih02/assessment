@@ -13,15 +13,13 @@ const ProjectProvider = ()=>{
     }
 
     useEffect(()=>{
-        getCourses();
+        getProjects();
     },[]);
 
     return(
-        <projectContext.Provider
-        value={{
-            list:projects,
-        }
-        }/>
+        <projectContext.Provider value={{ projects }}>
+        {children}
+      </projectContext.Provider>
     )
 }
 export default ProjectProvider;
