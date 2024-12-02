@@ -8,7 +8,11 @@ const ProjectProvider = ()=>{
 
     const getProjects = ()=>{
         axios.get("http://127.0.0.1:8000/api/project/withusers").then(({data})=>{
-            setProjects(data.projects);
+            projectswithusers=data.projects.map((project)=>({
+                ...project,
+                members: project.users,
+            }));
+            setProjects(projectswithusers);
         });
     }
 
