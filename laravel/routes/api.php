@@ -17,6 +17,7 @@ Route::prefix('user')->middleware(ApiCountMiddleware::class)->group(function () 
 
 Route::prefix('project')->middleware(ApiCountMiddleware::class)->group(function () {
 
+    Route::get('/withusers',[ProjectController::class,'getProjectwithUsers']);
     Route::get('/{id?}',[ProjectController::class,'getProject']);
     Route::post('/',[ProjectController::class,'createProject']);
     Route::put('/',[ProjectController::class,'updateProject']);
