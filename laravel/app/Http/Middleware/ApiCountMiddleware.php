@@ -18,6 +18,7 @@ class ApiCountMiddleware
     {
         $user_id = $request->user()->id;
         $user = User::find($user_id);
+        $user->increment('requests',1);
         return $next($request);
     }
 }
