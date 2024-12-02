@@ -6,14 +6,14 @@ import ProjectProvider from "./context/projectContext";
 
 function App() {
   return (
-    <div className="App"> 
-      <BrowserRouter>
-        <Routes>
-          <ProjectProvider>
-          <Route path="/projects" element={<Projects />} />
-          </ProjectProvider>
-        </Routes>
-      </BrowserRouter>
+    <div className="App">
+      <ProjectProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </BrowserRouter>
+      </ProjectProvider>
     </div>
   );
 }
