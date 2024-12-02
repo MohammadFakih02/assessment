@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function createUsers(Request $request){
+        $user = User::create([
+            "name"=> $request->name,
+            "password"=>$request->password,
+        ] );
+    }
     public function getUsers($id=null){
         if($id){
             $user=User::find($id);
@@ -24,6 +30,7 @@ class UserController extends Controller
 
     public function deleteUsers($id){
         $user=User::find($id)->delete();
+        $user->projects()->detach($id);
         return response()->json(["deleted_user"=>$user],200);
     }
 }
