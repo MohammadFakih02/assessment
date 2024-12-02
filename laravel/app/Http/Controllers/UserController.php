@@ -26,6 +26,7 @@ class UserController extends Controller
             "name"=> $request->name,
             "password"=> $request->password,
         ]);
+        return response()->json(["updated_user"=>$user],200);
     }
 
     public function deleteUsers($id){
