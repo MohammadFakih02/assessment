@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,8 @@ class ApiCountMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $user_id = $request->user()->id;
+        $user = User::find($user_id);
         return $next($request);
     }
 }
