@@ -21,4 +21,13 @@ class ProjectController extends Controller
         ]);
         return response()->json(["updated_project"=>$project],200);
     }
+
+    public function getProject($id){
+        if($id){
+            $project = Project::find($id);
+            return response()->json(["project"=>$project],200);
+        }
+        $project= Project::all();
+        return response()->json(["projetcs"=> $project],404);
+    }
 }
